@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: myapp
-        image: acoolwolf/myapp:1.0
+        image: acoolwolf/myapp:4.0
         ports:
         - containerPort: 80
