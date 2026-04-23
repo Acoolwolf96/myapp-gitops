@@ -1,0 +1,15 @@
+# Kubernetes config files
+.kube/
+kubeconfig
+
+# Docker images
+*.tar
+
+# Local secrets
+.env
+*.key
+*.crt
+
+# IDE files
+.vscode/
+.idea/
