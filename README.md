@@ -2,7 +2,7 @@
 
 This project demonstrates a complete GitOps-based deployment pipeline using Argo CD and K3s on a bare-metal setup.
 
-It shows how deployments can be automated, and version-controlled
+It shows how deployments can be automated, version-controlled and self-healing.
 
 ---
 
@@ -29,4 +29,10 @@ A simple static portfolio website served with nginx.
 2. Argo CD detects changes in the repository  
 3. Argo CD syncs with the cluster 
 4. Kubernetes performs a rolling update  
-5. Application is updated with zero downtime  
+5. Application is updated with zero downtime
+
+## Argo CD Dashboard
+
+
+*Argo CD continuously synchronizing the cluster with the GitHub repository.*
+<img width="1920" height="1042" alt="image" src="https://github.com/user-attachments/assets/b284b20e-ce34-4894-b732-1a384a695140" />
