@@ -405,7 +405,7 @@
         </div>
         <div id="eventLog" style="background: #0f172a; border-radius: 24px; padding: 1rem; margin-top: 1rem; font-family: 'Monaco', monospace; font-size: 0.8rem; max-height: 200px; overflow-y: auto; color: #cbd5e6;">
             <div style="color: #10b981;">[System] Argo CD initialized · watching GitHub repo</div>
-            <div style="color: #94a3b8;">[GitOps] Current deployment: nginx:alpine · replicas=2 · rolling update strategy</div>
+            <div style="color: #94a3b8;">[GitOps] Current deployment: nginx:alpine · replicas=3 · rolling update strategy</div>
         </div>
     </div>
 
@@ -501,7 +501,7 @@
 
     function bootstrapEvents() {
         addLogEntry(`Argo CD application "homelab-portfolio" synced to K3s cluster`, 'success');
-        addLogEntry(`K3s cluster: bare-metal with 2 worker nodes`, 'info');
+        addLogEntry(`K3s cluster: bare-metal with 3 worker nodes`, 'info');
         addLogEntry(`Self-healing: pod failures trigger automatic recreation`, 'info');
         updateSyncStatus('synced', currentVersion);
         versionSpan.innerHTML = `<i class="fas fa-tag"></i> version: ${currentVersion}`;
