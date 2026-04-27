@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Homelab DevOps Portfolio | GitOps with Argo CD & K3s</title>
-    <!-- Google Fonts & Font Awesome for Icons (no emojis, pure icons) -->
+    <!-- Google Fonts & Font Awesome for Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -27,7 +27,6 @@
             margin: 0 auto;
         }
 
-        /* Header & Hero */
         .hero {
             text-align: center;
             margin-bottom: 3rem;
@@ -43,7 +42,6 @@
             border-radius: 40px;
             letter-spacing: 0.3px;
             margin-bottom: 1rem;
-            backdrop-filter: blur(4px);
         }
 
         h1 {
@@ -68,7 +66,6 @@
             border-radius: 0 8px 8px 0;
         }
 
-        /* Cards layout */
         .grid-2col {
             display: flex;
             flex-wrap: wrap;
@@ -92,10 +89,6 @@
             transform: translateY(-5px);
             box-shadow: 0 28px 40px -16px rgba(0,0,0,0.15);
             background: white;
-        }
-
-        .skills-section, .arch-section {
-            margin: 2.5rem 0;
         }
 
         .section-title {
@@ -140,7 +133,6 @@
             transform: scale(1.02);
         }
 
-        /* Architecture SVG / Diagram */
         .diagram-container {
             background: #0f172a;
             border-radius: 36px;
@@ -172,7 +164,6 @@
             gap: 6px;
         }
 
-        /* Argo simulation + live status */
         .live-status {
             background: #1e293b;
             border-radius: 28px;
@@ -236,6 +227,23 @@
             background: #334155;
         }
 
+        .version-badge {
+            display: inline-block;
+            background: #e2e8f0;
+            color: #1e293b;
+            padding: 0.3rem 0.9rem;
+            border-radius: 40px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-top: 0.75rem;
+        }
+
+        .version-badge i {
+            color: #3b82f6;
+            margin-right: 6px;
+        }
+
         .deployment-meta {
             font-size: 0.85rem;
             background: #0f172a;
@@ -272,7 +280,6 @@
         </div>
     </div>
 
-    <!-- Skills & Overview Grid -->
     <div class="grid-2col">
         <div class="card">
             <i class="fas fa-server" style="font-size: 2rem; color:#3b82f6;"></i>
@@ -290,20 +297,19 @@
             <i class="fas fa-chart-line" style="font-size: 2rem; color:#3b82f6;"></i>
             <h3 style="margin: 1rem 0 0.5rem;">Application Info</h3>
             <p><strong>Container:</strong> nginx:alpine (static site)</p>
-            <p><strong>Registry:</strong> Docker Hub</p>
-            <p><strong>Replicas:</strong> 2 → managed by K3s Deployment</p>
+            <p><strong>Registry:</strong> Private Registry</p>
+            <p><strong>Replicas:</strong> 3 → managed by K3s Deployment</p>
             <p><strong>Strategy:</strong> RollingUpdate (zero downtime)</p>
-            <div id="versionIndicator" class="deployment-meta" style="display: inline-block; margin-top: 8px;"><i class="fas fa-tag"></i> version: 1.0.0</div>
+            <div id="versionIndicator" class="version-badge"><i class="fas fa-tag"></i> version: 1.0.0</div>
         </div>
     </div>
 
-    <!-- Architecture Diagram Section -->
     <div class="arch-section">
         <div class="section-title">
             <i class="fas fa-project-diagram"></i> GitOps Architecture Diagram
         </div>
         <div class="diagram-container">
-            <svg class="arch-svg" viewBox="0 0 1100 320" xmlns="http://www.w3.org/2000/svg" style="font-family: 'Inter', monospace;">
+            <svg class="arch-svg" viewBox="0 0 1100 340" xmlns="http://www.w3.org/2000/svg" style="font-family: 'Inter', monospace;">
                 <defs>
                     <linearGradient id="gradRepo" x1="0%" y1="0%" x2="100%" y2="0%">
                         <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
@@ -317,64 +323,64 @@
                         <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/>
                     </filter>
                 </defs>
-                <!-- Background -->
-                <rect width="1100" height="320" fill="#0f172a" rx="20" ry="20" />
-                <!-- Nodes -->
+                <rect width="1100" height="340" fill="#0f172a" rx="20" ry="20" />
+                
                 <!-- GitHub -->
-                <rect x="40" y="110" width="150" height="70" rx="12" fill="url(#gradRepo)" filter="url(#shadow)"/>
-                <text x="115" y="140" fill="white" font-size="13" font-weight="bold" text-anchor="middle">GitHub</text>
-                <text x="115" y="160" fill="#e2e8f0" font-size="10" text-anchor="middle">Repository</text>
-                <text x="115" y="175" fill="#cbd5e1" font-size="9" text-anchor="middle">(manifests + app)</text>
+                <rect x="40" y="120" width="150" height="70" rx="12" fill="url(#gradRepo)" filter="url(#shadow)"/>
+                <text x="115" y="150" fill="white" font-size="13" font-weight="bold" text-anchor="middle">GitHub</text>
+                <text x="115" y="168" fill="#e2e8f0" font-size="10" text-anchor="middle">Repository</text>
+                <text x="115" y="183" fill="#cbd5e1" font-size="9" text-anchor="middle">(manifests + app)</text>
 
                 <!-- Argo CD -->
-                <rect x="350" y="105" width="180" height="80" rx="12" fill="url(#gradArgo)" filter="url(#shadow)"/>
-                <text x="440" y="140" fill="white" font-size="13" font-weight="bold" text-anchor="middle">Argo CD</text>
-                <text x="440" y="158" fill="#fef3c7" font-size="10" text-anchor="middle">GitOps Engine</text>
-                <text x="440" y="173" fill="#fed7aa" font-size="9" text-anchor="middle">Sync and Deploy</text>
+                <rect x="350" y="115" width="180" height="80" rx="12" fill="url(#gradArgo)" filter="url(#shadow)"/>
+                <text x="440" y="148" fill="white" font-size="13" font-weight="bold" text-anchor="middle">Argo CD</text>
+                <text x="440" y="166" fill="#fef3c7" font-size="10" text-anchor="middle">GitOps Engine</text>
+                <text x="440" y="181" fill="#fed7aa" font-size="9" text-anchor="middle">Sync and Deploy</text>
 
                 <!-- K3s Cluster -->
-                <rect x="700" y="95" width="230" height="100" rx="14" fill="#1e293b" stroke="#475569" stroke-width="1.5" filter="url(#shadow)"/>
-                <text x="815" y="125" fill="#94a3b8" font-size="12" font-weight="bold" text-anchor="middle">K3s Cluster (Bare-metal)</text>
-                <rect x="730" y="140" width="70" height="32" rx="8" fill="#2d3a4b"/>
-                <text x="765" y="159" fill="#cbd5e1" font-size="10" text-anchor="middle">Pod</text>
-                <rect x="830" y="140" width="70" height="32" rx="8" fill="#2d3a4b"/>
-                <text x="865" y="159" fill="#cbd5e1" font-size="10" text-anchor="middle">Pod</text>
-                <text x="815" y="188" fill="#a0aec0" font-size="9" text-anchor="middle">nginx:alpine replicas=2</text>
+                <rect x="700" y="105" width="230" height="100" rx="14" fill="#1e293b" stroke="#475569" stroke-width="1.5" filter="url(#shadow)"/>
+                <text x="815" y="133" fill="#94a3b8" font-size="12" font-weight="bold" text-anchor="middle">K3s Cluster (Bare-metal)</text>
+                <rect x="730" y="148" width="70" height="32" rx="8" fill="#2d3a4b"/>
+                <text x="765" y="167" fill="#cbd5e1" font-size="10" text-anchor="middle">Pod</text>
+                <rect x="830" y="148" width="70" height="32" rx="8" fill="#2d3a4b"/>
+                <text x="865" y="167" fill="#cbd5e1" font-size="10" text-anchor="middle">Pod</text>
+                <text x="815" y="196" fill="#a0aec0" font-size="9" text-anchor="middle">nginx:alpine replicas=2</text>
 
-                <!-- arrows -->
-                <line x1="190" y1="140" x2="340" y2="140" stroke="#60a5fa" stroke-width="2.5" stroke-dasharray="5 3"/>
-                <polygon points="340,135 352,140 340,145" fill="#60a5fa" />
-                <text x="265" y="132" fill="#90cdf4" font-size="9" text-anchor="middle">git push</text>
+                <!-- Arrows -->
+                <line x1="190" y1="150" x2="340" y2="150" stroke="#60a5fa" stroke-width="2.5" stroke-dasharray="5 3"/>
+                <polygon points="340,145 352,150 340,155" fill="#60a5fa" />
+                <text x="265" y="142" fill="#90cdf4" font-size="9" text-anchor="middle">git push</text>
 
-                <line x1="530" y1="140" x2="690" y2="140" stroke="#f97316" stroke-width="2.5" stroke-dasharray="6 4"/>
-                <polygon points="690,135 702,140 690,145" fill="#f97316" />
-                <text x="615" y="128" fill="#fed7aa" font-size="9" text-anchor="middle">k8s manifests</text>
+                <line x1="530" y1="150" x2="690" y2="150" stroke="#f97316" stroke-width="2.5" stroke-dasharray="6 4"/>
+                <polygon points="690,145 702,150 690,155" fill="#f97316" />
+                <text x="615" y="138" fill="#fed7aa" font-size="9" text-anchor="middle">k8s manifests</text>
 
-                <!-- Service & User -->
-                <rect x="940" y="110" width="130" height="60" rx="12" fill="#0f172a" stroke="#3b82f6" stroke-width="1.5" />
-                <text x="1005" y="137" fill="#93c5fd" font-size="12" font-weight="bold" text-anchor="middle">Service</text>
-                <text x="1005" y="154" fill="#b9e0ff" font-size="9" text-anchor="middle">LoadBalancer</text>
-                <text x="1005" y="165" fill="#b9e0ff" font-size="8" text-anchor="middle">/ NodePort</text>
+                <!-- Service -->
+                <rect x="940" y="120" width="130" height="60" rx="12" fill="#0f172a" stroke="#3b82f6" stroke-width="1.5" />
+                <text x="1005" y="147" fill="#93c5fd" font-size="12" font-weight="bold" text-anchor="middle">Service</text>
+                <text x="1005" y="164" fill="#b9e0ff" font-size="9" text-anchor="middle">LoadBalancer</text>
+                <text x="1005" y="175" fill="#b9e0ff" font-size="8" text-anchor="middle">/ NodePort</text>
 
-                <line x1="930" y1="140" x2="935" y2="140" stroke="#94a3b8" stroke-width="2"/>
-                <polygon points="936,136 946,140 936,144" fill="#94a3b8" />
+                <line x1="930" y1="150" x2="935" y2="150" stroke="#94a3b8" stroke-width="2"/>
+                <polygon points="936,146 946,150 936,154" fill="#94a3b8" />
 
-                <!-- user icon -->
-                <circle cx="1020" cy="235" r="16" fill="#94a3b8" />
-                <text x="1020" y="255" fill="#e2e8f0" font-size="8" text-anchor="middle">User</text>
-                <line x1="1020" y1="210" x2="1020" y2="190" stroke="#6c8fb0" stroke-width="1.8" stroke-dasharray="3 2"/>
-                <text x="1050" y="200" fill="#9bb5d4" font-size="8">https://</text>
+                <!-- User icon - properly positioned below the flow -->
+                <circle cx="1005" cy="260" r="18" fill="#64748b" stroke="#94a3b8" stroke-width="1.5"/>
+                <text x="1005" y="265" fill="white" font-size="11" font-weight="bold" text-anchor="middle">U</text>
+                <text x="1005" y="285" fill="#cbd5e1" font-size="9" text-anchor="middle">End User</text>
+                <line x1="1005" y1="240" x2="1005" y2="183" stroke="#6c8fb0" stroke-width="2" stroke-dasharray="4 3"/>
+                <text x="1035" y="210" fill="#9bb5d4" font-size="8">https://</text>
             </svg>
             <div class="legend">
                 <span><i class="fas fa-code-branch"></i> Git push trigger</span>
                 <span><i class="fas fa-sync-alt"></i> Argo CD sync</span>
                 <span><i class="fas fa-cubes"></i> K3s rolling update</span>
                 <span><i class="fas fa-globe"></i> Service exposed</span>
+                <span><i class="fas fa-user"></i> User access</span>
             </div>
         </div>
     </div>
 
-    <!-- Live interactive GitOps Simulation (JS) -->
     <div class="live-status">
         <div>
             <i class="fas fa-robot" style="margin-right: 8px;"></i> 
@@ -392,7 +398,6 @@
         </div>
     </div>
 
-    <!-- Workflow & Rolling Update simulation logs -->
     <div class="card" style="margin: 1.5rem 0;">
         <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: space-between;">
             <h3><i class="fas fa-stream"></i> GitOps Workflow Event Log</h3>
@@ -411,16 +416,13 @@
 </div>
 
 <script>
-    // APP STATE simulation (GitOps style version tracking)
     let currentVersion = "1.0.0";
-    let commitCounter = 1;
     const eventLogDiv = document.getElementById('eventLog');
     const syncStateDiv = document.getElementById('syncState');
     const versionSpan = document.getElementById('versionIndicator');
     const footerVersionSpan = document.getElementById('footerVersion');
     const lastSyncSpan = document.getElementById('lastSyncTime');
 
-    // Helper: format time
     function getCurrentTimeStr() {
         const now = new Date();
         return now.toLocaleTimeString([], { hour: '2-digit', minute:'2-digit', second:'2-digit' });
@@ -447,63 +449,48 @@
         if (status === 'synced') {
             syncStateDiv.innerHTML = `<i class="fas fa-check-circle"></i> Synced · Healthy (v${version})`;
             syncStateDiv.style.background = "#10b981";
-            syncStateDiv.style.color = "white";
         } else if (status === 'syncing') {
             syncStateDiv.innerHTML = `<i class="fas fa-sync-alt fa-spin"></i> Syncing · OutOfSync (v${version})`;
             syncStateDiv.style.background = "#f59e0b";
-            syncStateDiv.style.color = "#1e293b";
-        } else if (status === 'outofsync') {
-            syncStateDiv.innerHTML = `<i class="fas fa-exclamation-triangle"></i> OutOfSync · Pending (v${version})`;
-            syncStateDiv.style.background = "#ef4444";
         }
         lastSyncSpan.innerText = getCurrentTimeStr();
     }
 
-    // Simulate Argo CD detecting change -> rolling update
     function simulateGitCommit() {
-        const oldVersion = currentVersion;
         const majorMinor = currentVersion.split('.').slice(0,2).join('.');
         const patch = parseInt(currentVersion.split('.')[2]) + 1;
         const newVersion = `${majorMinor}.${patch}`;
         currentVersion = newVersion;
-        commitCounter++;
 
-        addLogEntry(`New commit pushed to GitHub: updated website content and deployment manifest (version ${currentVersion})`, 'commit');
-        addLogEntry(`Argo CD detects changes in repository (polling interval / webhook)`, 'sync');
+        addLogEntry(`New commit pushed to GitHub: updated deployment manifest (version ${currentVersion})`, 'commit');
+        addLogEntry(`Argo CD detects changes in repository`, 'sync');
         updateSyncStatus('syncing', currentVersion);
         
         setTimeout(() => {
-            addLogEntry(`Argo CD starts sync operation: applying new Deployment with rolling update strategy`, 'sync');
-            addLogEntry(`Kubernetes rolling update initiated: terminating old pods, spinning up new replicas (version ${currentVersion})`, 'success');
+            addLogEntry(`Argo CD starts sync: applying new Deployment with rolling update`, 'sync');
+            addLogEntry(`Kubernetes rolling update: terminating old pods, creating new replicas (version ${currentVersion})`, 'success');
             
             setTimeout(() => {
-                addLogEntry(`Deployment successful! New ReplicaSet scaled to 2 pods, old pods terminated gracefully. Zero downtime achieved.`, 'success');
-                addLogEntry(`Application updated: static portfolio now reflects version ${currentVersion} (nginx container)`, 'success');
+                addLogEntry(`Deployment successful! Zero downtime achieved.`, 'success');
+                addLogEntry(`Application now running version ${currentVersion}`, 'success');
                 updateSyncStatus('synced', currentVersion);
                 versionSpan.innerHTML = `<i class="fas fa-tag"></i> version: ${currentVersion}`;
                 footerVersionSpan.innerText = currentVersion;
-                
-                const subheadElem = document.querySelector('.subhead');
-                if(subheadElem && currentVersion.includes('1.0.2')) {
-                    subheadElem.innerHTML = `<i class="fas fa-rocket" style="color:#3b82f6;"></i> Fresh GitOps deployment v${currentVersion} · Live rolling update from Argo CD`;
-                } else {
-                    subheadElem.innerHTML = `<i class="fas fa-rocket" style="color:#3b82f6;"></i> Fully automated deployment from GitHub → Argo CD → K3s Cluster. Zero-downtime rolling updates and infrastructure as code. (v${currentVersion})`;
-                }
             }, 800);
         }, 600);
     }
 
     function manualRefreshSimulation() {
-        addLogEntry(`Manual refresh triggered: Argo CD fetches latest commit from GitHub repository`, 'info');
-        addLogEntry(`No new changes detected (or re-sync with current version ${currentVersion})`, 'info');
+        addLogEntry(`Manual refresh: Argo CD fetches latest from GitHub`, 'info');
+        addLogEntry(`No new changes detected (current version ${currentVersion})`, 'info');
         updateSyncStatus('synced', currentVersion);
-        addLogEntry(`Cluster manifest in sync with Git. Self-healing: all pods running expected version.`, 'success');
+        addLogEntry(`Cluster in sync with Git. Self-healing active.`, 'success');
     }
 
     function clearLogs() {
         eventLogDiv.innerHTML = '';
-        addLogEntry('Logs cleared · Argo CD continuous monitoring active', 'info');
-        addLogEntry(`Current deployment version: ${currentVersion} · RollingUpdate strategy ready`, 'info');
+        addLogEntry('Logs cleared · Argo CD monitoring active', 'info');
+        addLogEntry(`Current version: ${currentVersion} · RollingUpdate ready`, 'info');
     }
 
     function setDeploymentDate() {
@@ -513,16 +500,15 @@
     }
 
     function bootstrapEvents() {
-        addLogEntry(`Argo CD application "homelab-portfolio" created and synced to K3s cluster`, 'success');
-        addLogEntry(`K3s cluster: 1 control-plane, 2 worker nodes simulated (bare-metal homelab)`, 'info');
-        addLogEntry(`Self-healing: if a pod crashes, K8s recreates it automatically or Argo CD corrects drift`, 'info');
+        addLogEntry(`Argo CD application "homelab-portfolio" synced to K3s cluster`, 'success');
+        addLogEntry(`K3s cluster: bare-metal with 2 worker nodes`, 'info');
+        addLogEntry(`Self-healing: pod failures trigger automatic recreation`, 'info');
         updateSyncStatus('synced', currentVersion);
         versionSpan.innerHTML = `<i class="fas fa-tag"></i> version: ${currentVersion}`;
         footerVersionSpan.innerText = currentVersion;
         setDeploymentDate();
     }
 
-    // Event listeners
     document.getElementById('simulateCommitBtn').addEventListener('click', simulateGitCommit);
     document.getElementById('forceRefreshBtn').addEventListener('click', manualRefreshSimulation);
     document.getElementById('clearLogsBtn').addEventListener('click', clearLogs);
