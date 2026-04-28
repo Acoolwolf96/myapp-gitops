@@ -55,6 +55,20 @@ local network.
 | 4 | K3s networking | Pod and service network isolation |
 
 ---
+## Observability Stack
+
+A full monitoring stack deployed via Helm providing real-time visibility
+into cluster health and resource consumption.
+
+| Component | Role |
+|-----------|------|
+| Prometheus | Metrics collection and time-series storage |
+| Grafana | Visualisation and dashboarding |
+| Alertmanager | Alert routing and notification management |
+| Node Exporter | Host-level hardware and OS metrics |
+| kube-state-metrics | Kubernetes object state metrics |
+
+---
 
 ## GitOps Workflow
 
@@ -75,11 +89,18 @@ local network.
 | Portfolio app | NodePort |
 | Argo CD UI | NodePort |
 | Private Registry | NodePort |
+| Grafana | NodePort |
+
 
 ---
 
 ## Argo CD Dashboard
 *Argo CD continuously synchronizing the cluster with the GitHub repository.*
 <img width="1920" height="1042" alt="image" src="https://github.com/user-attachments/assets/621ad916-780f-4fd3-9392-cab37f639136" />
+
+## Grafana Dashboard
+*Real-time cluster metrics including CPU utilisation, memory consumption and pod health.*
+<img width="1920" height="1042" alt="image" src="https://github.com/user-attachments/assets/a76f7d65-f00b-4003-8c7a-ce0b06c1de78" />
+
 
 
