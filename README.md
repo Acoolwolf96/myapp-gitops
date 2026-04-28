@@ -2,8 +2,7 @@
 
 This project demonstrates a complete GitOps-based deployment pipeline running on a 
 self-hosted Kubernetes cluster, with a private container registry and layered network 
-security. It shows how deployments can be automated, version-controlled and self-healing 
-without dependency on external image registries.
+security. It shows how deployments can be automated, version-controlled and self-healing
 
 ---
 
